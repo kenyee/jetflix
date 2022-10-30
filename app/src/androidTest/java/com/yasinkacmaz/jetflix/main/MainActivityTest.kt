@@ -10,8 +10,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import com.yasinkacmaz.jetflix.BuildConfig
 import com.yasinkacmaz.jetflix.ui.main.MainActivity
-import com.yasinkacmaz.jetflix.util.waitUntilDoesNotExist
-import com.yasinkacmaz.jetflix.util.waitUntilExists
+import com.yasinkacmaz.jetflix.util.mockweb.MockWebErrorDispatcher
+import com.yasinkacmaz.jetflix.util.mockweb.MockWebSuccessDispatcher
+import com.yasinkacmaz.jetflix.util.compose.waitUntilDoesNotExist
+import com.yasinkacmaz.jetflix.util.compose.waitUntilExists
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import okhttp3.mockwebserver.MockWebServer

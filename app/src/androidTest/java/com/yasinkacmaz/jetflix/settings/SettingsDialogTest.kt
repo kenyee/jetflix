@@ -12,7 +12,7 @@ import com.yasinkacmaz.jetflix.R
 import com.yasinkacmaz.jetflix.ui.settings.Language
 import com.yasinkacmaz.jetflix.ui.settings.SettingsDialog
 import com.yasinkacmaz.jetflix.ui.settings.SettingsViewModel
-import com.yasinkacmaz.jetflix.util.getString
+import com.yasinkacmaz.jetflix.util.compose.getString
 import com.yasinkacmaz.jetflix.util.setTestContent
 import org.junit.Rule
 import org.junit.Test

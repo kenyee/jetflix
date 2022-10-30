@@ -23,9 +23,9 @@ import com.yasinkacmaz.jetflix.ui.filter.FilterState
 import com.yasinkacmaz.jetflix.ui.filter.genres.GenreUiModel
 import com.yasinkacmaz.jetflix.ui.filter.option.SortBy
 import com.yasinkacmaz.jetflix.ui.filter.option.SortOrder
-import com.yasinkacmaz.jetflix.util.getString
+import com.yasinkacmaz.jetflix.util.compose.getString
+import com.yasinkacmaz.jetflix.util.matchers.withRole
 import com.yasinkacmaz.jetflix.util.setTestContent
-import com.yasinkacmaz.jetflix.util.withRole
 import org.junit.Rule
 import org.junit.Test
 
