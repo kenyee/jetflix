@@ -34,3 +34,6 @@ Go to [Releases](https://github.com/yasinkacmaz/jetflix/releases) page to downlo
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for Dependency Injection
 - [OkHttp](https://github.com/square/okhttp) and [Retrofit](https://github.com/square/retrofit) for network operations
 - [TheMovieDb(Tmdb) Api](https://developers.themoviedb.org/3) for movies
+
+## Testing
+See [Testing](TESTING.md)

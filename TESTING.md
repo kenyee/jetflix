@@ -1,10 +1,19 @@
 ## General Testing Recommendations
-After playing with the app a bit, these are general testing recommendations:
+After playing with the app a bit, these are general testing recommendations (in roughly priority order):
+* Unit test any utility classes
 * Unit test viewmodels or use cases (wherever the business logic lives)
 * Unit test any repositories with a mock web server so you can test network error handling
+* Add test coverage to identify which parts of code need additional testing
 * Test each composable for display/click behavior (instrumentation tests)
-* Add smoke tests that can also be used for baseline profiles (instrumentation tests)
+* Robolectric to test code that uses Android-specific code
+* Add smoke tests that can also be used for baseline profiles (automation/instrumentation tests) using fake network data for reliability
 * Screenshot testing (unit tests) to check for layout changes if you upgrade libraries
+* Add smoke tests with live server data so there's a canary job that can flag if the backend has broken the clients; 
+alternatively, add Pact testing to the backend to make sure the client data formatting doesn't get broken
+
+These are roughly in priority order and are generally in the testing pyramid shape.  There are minimal
+tests for automation/integration tests.  The majority of tests are unit tests that don't require devices
+because they are faster to run.
 
 ## Analysis of Codebase
 
@@ -70,7 +79,7 @@ states back easily because you usually record good responses.
 * Added MainActivityTest for instrumentation tests on the main activity
 * Modified MoviesViewModelTest, MoviesPagingSourceTest, and MovieMapperTest to use JSON files
 * Slight cleanup of code layout
-* Added Kover and was surprised unit tests only have 15% line coverage
+* Added Kover and was surprised unit tests only have 15% line coverage (Kover doesn't support instrumentation tests)
 
 ## Future Improvements
 * Reorganize codebase so it's better modularized/layered
