@@ -15,4 +15,4 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-include(":lib:unittest")
+include(":lib:testing:unittest")

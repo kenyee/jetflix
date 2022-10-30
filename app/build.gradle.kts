@@ -113,7 +113,7 @@ dependencies {
     androidTestImplementation(libs.bundles.androidTest)
     kaptAndroidTest(libs.hiltCompiler)
     debugImplementation(libs.compose.uiTest.manifest)
-    testImplementation(project(":lib:unittest"))
+    testImplementation(project(":lib:testing:unittest"))
 }
 
 // NOTE: Kover doesn't work w/ instrumentation tests yet:
