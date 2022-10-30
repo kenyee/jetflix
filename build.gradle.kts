@@ -54,7 +54,7 @@ subprojects {
                 targetSdk = Config.targetSdk
                 versionName = Config.versionName
                 versionCode = Config.versionCode
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                testInstrumentationRunner = "com.yasinkacmaz.jetflix.util.HiltTestRunner"
             }
             compileOptions {
                 sourceCompatibility = Config.javaVersion
