@@ -1,4 +1,4 @@
-package com.yasinkacmaz.jetflix.util.mockweb
+package com.yasinkacmaz.jetflix.testing.androidtest.mockweb
 
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
@@ -13,7 +13,8 @@ import kotlin.reflect.KClass
 
 class MockWebSuccessDispatcher(
     private val clazz: KClass<*>,
-    private val responseFilesByPath: Map<String, String>
+    private val responseFilesByPath: Map<String, String>,
+    private val networkDelayMsec: Long = 200
 ) : Dispatcher() {
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     override fun dispatch(request: RecordedRequest): MockResponse {
@@ -21,10 +22,10 @@ class MockWebSuccessDispatcher(
         val responseFile = responseFilesByPath.entries.firstOrNull {
             requestPath.startsWith(it.key)
         }?.value
-        Thread.sleep(200) // real network calls have a delay
+        Thread.sleep(networkDelayMsec) // real network calls have a delay
         return if (responseFile != null) {
             val responseBody = asset(context, responseFile)
-            MockResponse().setResponseCode(200).setBody(responseBody)
+            MockResponse().setResponseCode(HTTP_STATUS_OK).setBody(responseBody)
         } else {
             throw IllegalArgumentException("No mock file for $requestPath")
         }
@@ -42,4 +43,8 @@ class MockWebSuccessDispatcher(
 
     private fun inputStreamToString(inputStream: InputStream, charsetName: String = "UTF-8"): String =
         InputStreamReader(inputStream, charsetName).readText()
+
+    companion object {
+        private const val HTTP_STATUS_OK = 200
+    }
 }

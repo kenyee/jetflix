@@ -1,4 +1,4 @@
-package com.yasinkacmaz.jetflix.util.compose
+package com.yasinkacmaz.jetflix.testing.androidtest.compose
 
 import androidx.activity.ComponentActivity
 import androidx.annotation.StringRes
