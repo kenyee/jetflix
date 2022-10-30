@@ -2,6 +2,7 @@ package com.yasinkacmaz.jetflix.di
 
 import android.content.Context
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.yasinkacmaz.jetflix.BuildConfig
 import com.yasinkacmaz.jetflix.R
 import com.yasinkacmaz.jetflix.service.ConfigurationService
 import com.yasinkacmaz.jetflix.service.MovieService
@@ -19,14 +20,14 @@ import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Singleton
-
-private const val BASE_URL = "https://api.themoviedb.org/3/"
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
     @Provides
     @Singleton
     @IntoSet
@@ -43,19 +44,26 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(interceptors: Set<@JvmSuppressWildcards Interceptor>): OkHttpClient {
+    fun provideOkHttpClient(
+        interceptors: Set<@JvmSuppressWildcards Interceptor>
+    ): OkHttpClient {
         return OkHttpClient.Builder().apply {
             interceptors().addAll(interceptors)
+            if (BuildConfig.DEBUG) {
+                val logger = HttpLoggingInterceptor()
+                logger.setLevel(HttpLoggingInterceptor.Level.HEADERS)
+                interceptors().add(logger)
+            }
         }.build()
     }
 
     @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, json: Json): Retrofit {
+    fun provideRetrofit(@BaseUrl baseUrl: String, okHttpClient: OkHttpClient, json: Json): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl(baseUrl)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
