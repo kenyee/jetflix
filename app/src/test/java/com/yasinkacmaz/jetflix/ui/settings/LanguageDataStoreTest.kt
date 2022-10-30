@@ -2,9 +2,9 @@ package com.yasinkacmaz.jetflix.ui.settings
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.yasinkacmaz.jetflix.testing.coroutine.CoroutineTestRule
+import com.yasinkacmaz.jetflix.testing.json
 import com.yasinkacmaz.jetflix.ui.settings.LanguageDataStore.Companion.KEY_LANGUAGE
-import com.yasinkacmaz.jetflix.util.CoroutineTestRule
-import com.yasinkacmaz.jetflix.util.json
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every

@@ -1,7 +1,7 @@
 package com.yasinkacmaz.jetflix.ui.moviedetail.image
 
 import com.yasinkacmaz.jetflix.data.ImagesResponse
-import com.yasinkacmaz.jetflix.util.parseJson
+import com.yasinkacmaz.jetflix.testing.parseJson
 import com.yasinkacmaz.jetflix.util.toOriginalUrl
 import org.junit.Test
 import strikt.api.expectThat

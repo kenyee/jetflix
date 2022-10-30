@@ -1,4 +1,4 @@
-package com.yasinkacmaz.jetflix.util
+package com.yasinkacmaz.jetflix.testing.coroutine
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

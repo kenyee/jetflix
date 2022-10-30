@@ -3,10 +3,10 @@ package com.yasinkacmaz.jetflix.ui.filter
 import com.yasinkacmaz.jetflix.data.Genre
 import com.yasinkacmaz.jetflix.data.GenresResponse
 import com.yasinkacmaz.jetflix.service.MovieService
+import com.yasinkacmaz.jetflix.testing.coroutine.CoroutineTestRule
 import com.yasinkacmaz.jetflix.ui.filter.genres.GenreUiModel
 import com.yasinkacmaz.jetflix.ui.filter.genres.GenreUiModelMapper
 import com.yasinkacmaz.jetflix.ui.filter.option.SortBy
-import com.yasinkacmaz.jetflix.util.CoroutineTestRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify

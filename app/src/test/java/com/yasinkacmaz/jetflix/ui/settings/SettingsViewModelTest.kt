@@ -1,7 +1,7 @@
 package com.yasinkacmaz.jetflix.ui.settings
 
 import com.yasinkacmaz.jetflix.service.ConfigurationService
-import com.yasinkacmaz.jetflix.util.CoroutineTestRule
+import com.yasinkacmaz.jetflix.testing.coroutine.CoroutineTestRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
