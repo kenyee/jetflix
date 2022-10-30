@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.serialization) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.versions) apply true
+    alias(libs.plugins.kover) apply true
 }
 
 subprojects {
@@ -87,4 +88,14 @@ tasks.named<Wrapper>("wrapper") {
 
 task("clean", Delete::class) {
     delete(rootProject.buildDir)
+}
+
+koverMerged {
+    enable()
+
+    filters {
+        classes {
+            excludes += "*.databinding.*" // exclude classes by mask
+        }
+    }
 }

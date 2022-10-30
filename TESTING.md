@@ -1,5 +1,5 @@
 ## General Testing Recommendations
-After playing with the app a bit, these are the general testing recommendations:
+After playing with the app a bit, these are general testing recommendations:
 * Unit test viewmodels or use cases (wherever the business logic lives)
 * Unit test any repositories with a mock web server so you can test network error handling
 * Test each composable for display/click behavior (instrumentation tests)
@@ -31,6 +31,7 @@ but the cast/crew tests can't seem to find the Cast/Crew tags.
 A few types of testing are missing:
 * high level instrumentation testing of the app on an emulator; this is generally done for smoke testing of the app
 * network JSON testing of some of the data mappers for unit tests
+* mock web server testing in unit tests for the data sources
 * screenshot testing to verify nothing has changed with layouts when upgrading libraries
 
 ## Instrumentation Tests with Network Traffic
@@ -69,3 +70,9 @@ states back easily because you usually record good responses.
 * Added MainActivityTest for instrumentation tests on the main activity
 * Modified MoviesViewModelTest, MoviesPagingSourceTest, and MovieMapperTest to use JSON files
 * Slight cleanup of code layout
+* Added Kover and was surprised unit tests only have 15% line coverage
+
+## Future Improvements
+* Reorganize codebase so it's better modularized/layered
+* Add Paparazzi testing for screenshot unit tests
+* Resurrect okreplay to make capturing/updating network data easier for mock web server tests

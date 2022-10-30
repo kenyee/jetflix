@@ -8,6 +8,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlinx-serialization")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlinx.kover")
 }
 
 android {
@@ -91,7 +92,7 @@ android {
 fun getTestBuildTypeOrDefault(): String =
     if (project.hasProperty("testBuildType")) {
         project.properties["testBuildType"].toString()
-    } else "debug"
+    } else "mockserver"
 
 kapt {
     correctErrorTypes = true
@@ -110,4 +111,15 @@ dependencies {
     androidTestImplementation(libs.bundles.androidTest)
     kaptAndroidTest(libs.hiltCompiler)
     debugImplementation(libs.compose.uiTest.manifest)
+}
+
+// NOTE: Kover doesn't work w/ instrumentation tests yet:
+// https://github.com/Kotlin/kotlinx-kover/issues/96
+kover {
+    instrumentation {
+        excludeTasks += "testReleaseUnitTest"
+        excludeTasks += "testDebugUnitTest"
+        excludeTasks += "testReleaseAndroidTest"
+        excludeTasks += "testDebugAndroidTest"
+    }
 }
