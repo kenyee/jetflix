@@ -1,3 +1,4 @@
+
 import java.nio.charset.Charset
 import java.util.Properties
 
@@ -40,6 +41,8 @@ android {
             isDefault = true
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-DEBUG"
+            buildConfigField("int", "MOCKSERVER_PORT", "8080")
+            buildConfigField("String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\"")
         }
         getByName("release") {
             isShrinkResources = true
@@ -47,6 +50,13 @@ android {
             isDebuggable = false
             signingConfig = signingConfigs.getByName("release")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("int", "MOCKSERVER_PORT", "8080")
+            buildConfigField("String", "API_BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        }
+        create("mockserver") {
+            initWith(buildTypes.getByName("debug"))
+            isDefault = false
+            buildConfigField("String", "API_BASE_URL", "\"http://127.0.0.1:8080/\"")
         }
     }
 
@@ -74,7 +84,14 @@ android {
         )
     }
     namespace = "com.yasinkacmaz.jetflix"
+
+    testBuildType = getTestBuildTypeOrDefault()
 }
+
+fun getTestBuildTypeOrDefault(): String =
+    if (project.hasProperty("testBuildType")) {
+        project.properties["testBuildType"].toString()
+    } else "debug"
 
 kapt {
     correctErrorTypes = true
@@ -88,6 +105,9 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.hilt)
     kapt(libs.hiltCompiler)
+
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.androidTest)
+    kaptAndroidTest(libs.hiltCompiler)
+    debugImplementation(libs.compose.uiTest.manifest)
 }
