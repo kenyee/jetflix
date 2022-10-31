@@ -4,7 +4,7 @@ After playing with the app a bit, these are general testing recommendations (in 
 * Unit test viewmodels or use cases (wherever the business logic lives)
 * Unit test any repositories with a mock web server so you can test network error handling
 * Add test coverage to identify which parts of code need additional testing
-* Test each composable for display/click behavior (instrumentation tests)
+* Test each composable for display/click behavior (Compose tests are instrumentation tests)
 * Robolectric to test code that uses Android-specific code
 * Add smoke tests that can also be used for baseline profiles (automation/instrumentation tests) using fake network data for reliability
 * Screenshot testing (unit tests) to check for layout changes if you upgrade libraries
@@ -77,11 +77,17 @@ states back easily because you usually record good responses.
 * Added mockserver build type for switching to mocked network data
 * Grabbed JSON for the various URLs by hitting the TMDB site manually and had to modify page 1 of results to only be 1 page of results
 * Added MainActivityTest for instrumentation tests on the main activity
-* Modified MoviesViewModelTest, MoviesPagingSourceTest, and MovieMapperTest to use JSON files
+* Modified MoviesViewModelTest, MoviesPagingSourceTest, and MovieMapperTest to use JSON files instead of creating the data models directly; puzzled about request to unit test the MoviesGrid with a mock webserver because it's a PagingSource underneath and the Android docs say to use a mock API which is what's done already (https://developer.android.com/topic/libraries/architecture/paging/test)
 * Slight cleanup of code layout
-* Added Kover and was surprised unit tests only have 15% line coverage (Kover doesn't support instrumentation tests)
+* Added Kover and was surprised unit tests only have 15% line coverage (found out Kover doesn't support instrumentation tests)
+* Pulled most of the testing utils into the :lib:testing:unittest and :lib:testing:androidtest modules
+* Added a mockwebserver test rule to reduce boilerplate and provide an API for unit/instrumentation tests
 
 ## Future Improvements
 * Reorganize codebase so it's better modularized/layered
 * Add Paparazzi testing for screenshot unit tests
+* Add Jacoco for full coverage reports
 * Resurrect okreplay to make capturing/updating network data easier for mock web server tests
+
+## Other Notes
+* I think I hit a bug in Hilt and wasn't able to get @TestInstallIn to work to replace the base URL so ended up using a build variant
