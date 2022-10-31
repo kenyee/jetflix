@@ -38,8 +38,8 @@ android {
 }
 
 dependencies {
-    implementation(libs.okhttp.mockserver)
     implementation(libs.androidX.testrunner)
     implementation(libs.compose.uiTest)
     implementation(libs.compose.uiTestJunit)
+    api(project(":lib:testing:unittest"))
 }

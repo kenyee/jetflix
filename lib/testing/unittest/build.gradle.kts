@@ -12,4 +12,5 @@ dependencies {
     implementation(libs.junit)
     implementation(libs.jsonSerialization)
     implementation(libs.coroutinesTest)
+    implementation(libs.okhttp.mockserver)
 }
