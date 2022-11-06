@@ -91,7 +91,7 @@ android {
 fun getTestBuildTypeOrDefault(): String =
     if (project.hasProperty("testBuildType")) {
         project.properties["testBuildType"].toString()
-    } else "debug"
+    } else "mockserver"
 
 kapt {
     correctErrorTypes = true
@@ -109,5 +109,5 @@ dependencies {
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.androidTest)
     kaptAndroidTest(libs.hiltCompiler)
-    debugImplementation(libs.compose.uiTest.manifest)
+    add("mockserverImplementation", libs.compose.uiTest.manifest)
 }
