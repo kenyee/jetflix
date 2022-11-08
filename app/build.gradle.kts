@@ -8,7 +8,6 @@ plugins {
     id("kotlin-kapt")
     id("kotlinx-serialization")
     id("dagger.hilt.android.plugin")
-    id("org.jetbrains.kotlinx.kover")
 }
 
 android {
@@ -70,7 +69,8 @@ android {
         }
         animationsDisabled = true
         emulatorSnapshots {
-            enableForTestFailures = true
+            // NOTE: enableTestFailures causes connectedAndroidTest CLI to hang
+            // enableForTestFailures = true
             maxSnapshotsForTestFailures = 2
             compressSnapshots = false
         }
@@ -115,15 +115,4 @@ dependencies {
     implementation(libs.compose.uiTest.manifest)
     testImplementation(project(":lib:testing:unittest"))
     androidTestImplementation(project(":lib:testing:androidtest"))
-}
-
-// NOTE: Kover doesn't work w/ instrumentation tests yet:
-// https://github.com/Kotlin/kotlinx-kover/issues/96
-kover {
-    instrumentation {
-        excludeTasks += "testReleaseUnitTest"
-        excludeTasks += "testDebugUnitTest"
-        excludeTasks += "testReleaseAndroidTest"
-        excludeTasks += "testDebugAndroidTest"
-    }
 }
