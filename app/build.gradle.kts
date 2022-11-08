@@ -67,7 +67,8 @@ android {
         }
         animationsDisabled = true
         emulatorSnapshots {
-            enableForTestFailures = true
+            // NOTE: enableTestFailures causes connectedAndroidTest CLI to hang
+            // enableForTestFailures = true
             maxSnapshotsForTestFailures = 2
             compressSnapshots = false
         }
@@ -109,5 +110,9 @@ dependencies {
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.androidTest)
     kaptAndroidTest(libs.hiltCompiler)
+
     add("mockserverImplementation", libs.compose.uiTest.manifest)
+    implementation(libs.compose.uiTest.manifest)
+    testImplementation(project(":lib:testing:unittest"))
+    androidTestImplementation(project(":lib:testing:androidtest"))
 }

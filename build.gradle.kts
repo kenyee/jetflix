@@ -17,7 +17,7 @@ plugins {
     alias(libs.plugins.serialization) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.versions) apply true
-}
+    alias(libs.plugins.rootcoverage) apply true
 
 subprojects {
     apply(plugin = "plugins.ktlint")
@@ -88,3 +88,30 @@ tasks.named<Wrapper>("wrapper") {
 task("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+<<<<<<< HEAD
+=======
+
+rootCoverage {
+    // The default build variant for every module
+    buildVariant = "mockserver"
+
+    // Class & package exclude patterns
+    excludes = listOf(
+        "**/*dagger*/**",
+        "**/hilt_aggregated_deps/**",
+        "**/com.yasinkacmaz.jetflix.di/**",
+        "**/*HiltComponents*/**",
+        "**/*Hilt_JetflixApplication*/**",
+    )
+
+    // Since 1.1 generateHtml is by default true
+    generateCsv = false
+    generateHtml = true
+    generateXml = true
+    executeAndroidTests = true
+    executeUnitTests = true
+    includeAndroidTestResults = true
+    includeUnitTestResults = true
+    includeNoLocationClasses = false
+}
+>>>>>>> c73bcb7 (switch from kover to rootcoverage plugin for code coverage)
