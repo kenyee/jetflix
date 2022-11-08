@@ -10,6 +10,7 @@ After playing with the app a bit, these are general testing recommendations (in 
 * Screenshot testing (unit tests) to check for layout changes if you upgrade libraries
 * Add smoke tests with live server data so there's a canary job that can flag if the backend has broken the clients; 
 alternatively, add Pact testing to the backend to make sure the client data formatting doesn't get broken
+* Switched to RootCoverage plugin instead of using Kover; shows 46% code coverage
 
 These are roughly in priority order and are generally in the testing pyramid shape.  There are minimal
 tests for automation/integration tests.  The majority of tests are unit tests that don't require devices
