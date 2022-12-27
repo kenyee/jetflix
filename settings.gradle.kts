@@ -15,3 +15,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+include(":lib:testing:unittest")
+include(":lib:testing:androidtest")

@@ -5,12 +5,12 @@ import com.yasinkacmaz.jetflix.data.CreditsResponse
 import com.yasinkacmaz.jetflix.data.ImagesResponse
 import com.yasinkacmaz.jetflix.data.MovieDetailResponse
 import com.yasinkacmaz.jetflix.service.MovieService
+import com.yasinkacmaz.jetflix.testing.coroutine.CoroutineTestRule
+import com.yasinkacmaz.jetflix.testing.coroutine.test
+import com.yasinkacmaz.jetflix.testing.parseJson
 import com.yasinkacmaz.jetflix.ui.moviedetail.credits.CreditsMapper
 import com.yasinkacmaz.jetflix.ui.moviedetail.image.ImageMapper
 import com.yasinkacmaz.jetflix.ui.navigation.ARG_MOVIE_ID
-import com.yasinkacmaz.jetflix.util.CoroutineTestRule
-import com.yasinkacmaz.jetflix.util.parseJson
-import com.yasinkacmaz.jetflix.util.test
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify

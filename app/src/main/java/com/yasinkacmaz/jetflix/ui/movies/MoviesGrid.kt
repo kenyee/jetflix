@@ -18,6 +18,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.paging.CombinedLoadStates
@@ -75,6 +76,7 @@ private fun LazyMoviesGrid(state: LazyGridState, moviePagingItems: LazyPagingIte
     val navController = LocalNavController.current
     val onMovieClicked: (Int) -> Unit = { movieId -> navController.navigate(Screen.DETAIL.createPath(movieId)) }
     LazyVerticalGrid(
+        modifier = Modifier.testTag("MoviesGrid"),
         columns = GridCells.Fixed(COLUMN_COUNT),
         contentPadding = PaddingValues(
             start = GRID_SPACING,
@@ -95,7 +97,8 @@ private fun LazyMoviesGrid(state: LazyGridState, moviePagingItems: LazyPagingIte
                     movie,
                     Modifier
                         .height(320.dp)
-                        .padding(vertical = GRID_SPACING),
+                        .padding(vertical = GRID_SPACING)
+                        .testTag("MovieContent"),
                     onMovieClicked
                 )
             }

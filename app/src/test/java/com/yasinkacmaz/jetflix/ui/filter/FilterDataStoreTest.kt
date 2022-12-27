@@ -2,10 +2,10 @@ package com.yasinkacmaz.jetflix.ui.filter
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.yasinkacmaz.jetflix.testing.coroutine.CoroutineTestRule
+import com.yasinkacmaz.jetflix.testing.json
 import com.yasinkacmaz.jetflix.ui.filter.FilterDataStore.Companion.KEY_FILTER_STATE
 import com.yasinkacmaz.jetflix.ui.filter.option.SortBy
-import com.yasinkacmaz.jetflix.util.CoroutineTestRule
-import com.yasinkacmaz.jetflix.util.json
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK

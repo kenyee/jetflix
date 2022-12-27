@@ -1,13 +1,13 @@
 package com.yasinkacmaz.jetflix.ui.movies
 
 import androidx.paging.PagingSource
-import com.yasinkacmaz.jetflix.data.MovieResponse
 import com.yasinkacmaz.jetflix.data.MoviesResponse
 import com.yasinkacmaz.jetflix.service.MovieService
+import com.yasinkacmaz.jetflix.testing.coroutine.CoroutineTestRule
+import com.yasinkacmaz.jetflix.testing.parseJson
 import com.yasinkacmaz.jetflix.ui.filter.FilterDataStore
 import com.yasinkacmaz.jetflix.ui.filter.MovieRequestOptionsMapper
 import com.yasinkacmaz.jetflix.ui.movies.movie.MovieMapper
-import com.yasinkacmaz.jetflix.util.CoroutineTestRule
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -42,7 +42,7 @@ class MoviesViewModelTest {
         every { key } returns 1
     }
 
-    private val moviesResponse = MoviesResponse(1, listOf(MovieResponse(1, "", "", "", "", "", "", 1.1, 1)), 1, 1)
+    private val moviesResponse: MoviesResponse = parseJson("movies_list.json")
 
     @Before
     fun setUp() {

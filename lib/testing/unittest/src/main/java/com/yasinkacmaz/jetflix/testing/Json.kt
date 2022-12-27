@@ -1,8 +1,9 @@
-package com.yasinkacmaz.jetflix.util
+package com.yasinkacmaz.jetflix.testing
 
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.io.Reader
+import java.lang.IllegalArgumentException
 
 val json = Json {
     isLenient = true
@@ -16,5 +17,6 @@ inline fun <reified T : Any> parseJson(fileName: String): T {
 
 fun Json.jsonStringFromFile(fileName: String): String {
     val inputStream = javaClass.classLoader!!.getResourceAsStream(fileName)
-    return inputStream.bufferedReader().use(Reader::readText)
+    return inputStream?.bufferedReader()?.use(Reader::readText)
+        ?: throw IllegalArgumentException("$fileName resource not found")
 }

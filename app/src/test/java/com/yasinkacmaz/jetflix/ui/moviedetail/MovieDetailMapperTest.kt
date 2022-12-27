@@ -2,7 +2,7 @@ package com.yasinkacmaz.jetflix.ui.moviedetail
 
 import com.yasinkacmaz.jetflix.data.MovieDetailResponse
 import com.yasinkacmaz.jetflix.data.ProductionCompanyResponse
-import com.yasinkacmaz.jetflix.util.parseJson
+import com.yasinkacmaz.jetflix.testing.parseJson
 import com.yasinkacmaz.jetflix.util.toBackdropUrl
 import com.yasinkacmaz.jetflix.util.toPosterUrl
 import org.junit.Test

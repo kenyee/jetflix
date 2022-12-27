@@ -1,4 +1,4 @@
-package com.yasinkacmaz.jetflix.util
+package com.yasinkacmaz.jetflix.testing.androidtest.matchers
 
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
