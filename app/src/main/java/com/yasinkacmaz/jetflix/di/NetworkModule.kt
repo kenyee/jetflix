@@ -6,6 +6,7 @@ import com.yasinkacmaz.jetflix.BuildConfig
 import com.yasinkacmaz.jetflix.R
 import com.yasinkacmaz.jetflix.service.ConfigurationService
 import com.yasinkacmaz.jetflix.service.MovieService
+import com.yasinkacmaz.jetflix.service.PersonService
 import com.yasinkacmaz.jetflix.ui.settings.LanguageDataStore
 import com.yasinkacmaz.jetflix.util.interceptor.ApiKeyInterceptor
 import com.yasinkacmaz.jetflix.util.interceptor.LanguageInterceptor
@@ -75,4 +76,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideConfigurationService(retrofit: Retrofit) = retrofit.create(ConfigurationService::class.java)
+
+    @Provides
+    @Singleton
+    fun providePersonService(retrofit: Retrofit) = retrofit.create(PersonService::class.java)
 }

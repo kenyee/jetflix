@@ -23,7 +23,7 @@ plugins {
 subprojects {
     apply(plugin = "plugins.ktlint")
     afterEvaluate {
-        tasks.withType(KotlinCompile::class).all {
+        tasks.withType<KotlinCompile>().configureEach {
             kotlinOptions {
                 jvmTarget = Config.javaVersion.toString()
                 allWarningsAsErrors = true
@@ -61,6 +61,14 @@ subprojects {
                 sourceCompatibility = Config.javaVersion
                 targetCompatibility = Config.javaVersion
             }
+
+            testOptions {
+                unitTests.apply {
+                    isIncludeAndroidResources = true
+                    isReturnDefaultValues = true
+                }
+                animationsDisabled = true
+            }
         }
     }
 }
@@ -83,7 +91,7 @@ tasks.withType<Test>().configureEach {
 // Change gradleVersion and run gradlew wrapper to properly update gradle wrapper
 tasks.named<Wrapper>("wrapper") {
     distributionType = Wrapper.DistributionType.BIN
-    gradleVersion = "7.5.1"
+    gradleVersion = "7.6"
 }
 
 task("clean", Delete::class) {

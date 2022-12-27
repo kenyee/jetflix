@@ -7,7 +7,7 @@ import androidx.compose.runtime.Stable
 
 data class Credits(@Stable val cast: List<Person>, @Stable val crew: List<Person>)
 
-data class Person(val name: String, val role: String, val profilePhotoUrl: String?, val gender: Gender)
+data class Person(val name: String, val role: String, val profilePhotoUrl: String?, val gender: Gender, val id: Int)
 
 enum class Gender { MALE, FEMALE }
 

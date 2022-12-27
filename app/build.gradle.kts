@@ -4,14 +4,14 @@ import java.util.Properties
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("kotlinx-serialization")
     id("dagger.hilt.android.plugin")
+    id("kotlinx-serialization")
+    kotlin("android")
+    kotlin("kapt")
 }
 
 android {
-
+    namespace = "com.yasinkacmaz.jetflix"
     buildFeatures {
         compose = true
     }
@@ -62,20 +62,6 @@ android {
         }
     }
 
-    testOptions {
-        unitTests.apply {
-            isIncludeAndroidResources = true
-            isReturnDefaultValues = true
-        }
-        animationsDisabled = true
-        emulatorSnapshots {
-            // NOTE: enableTestFailures causes connectedAndroidTest CLI to hang
-            // enableForTestFailures = true
-            maxSnapshotsForTestFailures = 2
-            compressSnapshots = false
-        }
-    }
-
     packagingOptions.apply {
         resources.excludes.addAll(
             listOf(
@@ -113,8 +99,8 @@ dependencies {
     androidTestImplementation(libs.bundles.androidTest)
     kaptAndroidTest(libs.hiltCompiler)
 
-    add("mockserverImplementation", libs.compose.uiTest.manifest)
-    implementation(libs.compose.uiTest.manifest)
+    add("mockserverImplementation", libs.compose.testManifest)
+    implementation(libs.compose.testManifest)
     testImplementation(project(":lib:testing:unittest"))
     androidTestImplementation(project(":lib:testing:androidtest"))
 }

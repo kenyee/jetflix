@@ -57,9 +57,8 @@ class MainActivityTest {
         // NOTE: this test will fail if the mock web server is not used
         mockWebServerRule.errorCode = 404
         composeTestRule.waitForIdle()
-        composeTestRule.waitUntilExists(hasText("Fetching Movies"), 5000)
+        composeTestRule.waitUntilDoesNotExist(hasText("Fetching Movies"), 5000)
         composeTestRule.onNodeWithText("Search Movies").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Fetching Movies").assertIsDisplayed()
         composeTestRule.waitUntilExists(hasText("HTTP 404 Client Error"), 5000)
     }
 }
