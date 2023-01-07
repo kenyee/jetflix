@@ -6,6 +6,8 @@ composeCompiler = "1.4.0-alpha02"
 accompanist = "0.27.1"
 okhttp = "5.0.0-alpha.10"
 flipper = "0.173.0"
+mavericks = "3.0.1"
+kaspresso = "1.5.1"
 
 [plugins]
 agp = { id = "com.android.application", version = "7.3.0" }
@@ -61,6 +63,13 @@ flipper = { module = "com.facebook.flipper:flipper", version.ref = "flipper" }
 flipper_network = { module = "com.facebook.flipper:flipper-network-plugin", version.ref = "flipper" }
 flipper_noop = { module = "com.facebook.flipper:flipper-noop", version.ref = "flipper" }
 flipper_soloader = { module = "com.facebook.soloader:soloader", version = "0.10.4" }
+mavericks = { module = "com.airbnb.android:mavericks", version.ref = "mavericks" }
+mavericks_navigation = { module = "com.airbnb.android:mavericks-navigation", version.ref = "mavericks" }
+mavericks_compose = { module = "com.airbnb.android:mavericks-compose", version.ref = "mavericks" }
+kaspresso = { module = "com.kaspersky.android-components:kaspresso", version.ref = "kaspresso" }
+kaspresso_compose = { module = "com.kaspersky.android-components:kaspresso-compose-support", version.ref = "kaspresso" }
+kaspresso_allure = { module = "com.kaspersky.android-components:kaspresso-allure-support", version.ref = "kaspresso" }
+
 
 [bundles]
 androidX = ["androidX_palette", "androidX_browser", "androidX_datastore", "androidX_corektx"]
